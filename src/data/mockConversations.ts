@@ -1,0 +1,348 @@
+import type { Message } from "../types";
+
+export const baseMockConversations: Record<string, Message[]> = {
+  "cus_002": [
+    // Day 1
+    {
+      id: "m_1",
+      customerId: "cus_002",
+      sender: "system",
+      type: "system-event",
+      content: "Lead assigned to Priya Desai (Mumbai to Hyderabad)",
+      timestamp: "2026-07-15T09:00:00Z",
+    },
+    {
+      id: "m_2",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Hi Priya! I'm your relocation coordinator from QuickMove. I see you're looking to move from Mumbai to Hyderabad. When are you planning to move?",
+      timestamp: "2026-07-15T09:15:00Z",
+    },
+    {
+      id: "m_3",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Hi! Yes, I need to move by the 1st of August. I'm starting a new job there on the 5th.",
+      timestamp: "2026-07-15T10:20:00Z",
+    },
+    {
+      id: "m_4",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "I have a 3BHK here in Andheri West.",
+      timestamp: "2026-07-15T10:21:00Z",
+    },
+    {
+      id: "m_5",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Great. August 1st gives us plenty of time. Do you have an estimated budget in mind? Also, what kind of property are you looking for in Hyderabad?",
+      timestamp: "2026-07-15T10:35:00Z",
+    },
+    {
+      id: "m_6",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "My budget for the move is around ₹60,000. For the new place, I'm looking at Gachibowli or Hitech City.",
+      timestamp: "2026-07-15T11:00:00Z",
+    },
+    {
+      id: "m_7",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Noted. A 3BHK move from Mumbai to Hyderabad typically ranges from ₹75,000 to ₹90,000 depending on the volume. Could you share some photos of your furniture or a rough list?",
+      timestamp: "2026-07-15T11:15:00Z",
+    },
+    {
+      id: "m_8",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "image",
+      content: "Living Room Setup",
+      timestamp: "2026-07-15T12:30:00Z",
+      metadata: { fileUrl: "/images/living-room.jpg", fileName: "living-room.jpg", fileSize: "2.4 MB" }
+    },
+    {
+      id: "m_9",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "image",
+      content: "Master Bedroom",
+      timestamp: "2026-07-15T12:31:00Z",
+      metadata: { fileUrl: "/images/bedroom.jpg", fileName: "bedroom.jpg", fileSize: "1.8 MB" }
+    },
+    {
+      id: "m_10",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "I have a large L-shaped sofa, a 6-seater dining table, 3 double beds, and a double-door fridge. There are also 2 ACs that need uninstallation.",
+      timestamp: "2026-07-15T12:35:00Z",
+    },
+    {
+      id: "m_11",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Thanks for the details. Do you have any fragile items or pets that require special care?",
+      timestamp: "2026-07-15T13:00:00Z",
+    },
+    {
+      id: "m_12",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "No pets. But I do have a lot of glassware and a large flat-screen TV.",
+      timestamp: "2026-07-15T13:10:00Z",
+    },
+    
+    // Day 2
+    {
+      id: "m_13",
+      customerId: "cus_002",
+      sender: "system",
+      type: "call-summary",
+      content: "Phone Call (12 mins): Discussed exact loading conditions at origin. Customer confirmed service lift is available. Addressed concern regarding fragile packing.",
+      timestamp: "2026-07-16T10:00:00Z",
+      metadata: { duration: 720 }
+    },
+    {
+      id: "m_14",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "voice",
+      content: "Voice note explaining changes to move date and location.",
+      timestamp: "2026-07-16T11:05:00Z",
+      metadata: { duration: 45, fileUrl: "/audio/voice_1.mp3" }
+    },
+    {
+      id: "m_15",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Just to follow up on the voice note, my company changed the joining date to July 28th. Can we do the move on July 24th instead? Also, I think Banjara Hills might be better for my commute.",
+      timestamp: "2026-07-16T11:07:00Z",
+    },
+    {
+      id: "m_16",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "We can accommodate July 24th, but it's a tighter timeline. I've noted Banjara Hills. This locality might require a smaller shuttle truck for delivery due to narrow lanes, which could add a slight cost.",
+      timestamp: "2026-07-16T11:30:00Z",
+    },
+    {
+      id: "m_17",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Oh, okay. Can you give me a revised quote? I can stretch the budget to ₹80,000, but my company is only reimbursing ₹75k.",
+      timestamp: "2026-07-16T12:00:00Z",
+    },
+    {
+      id: "m_18",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "pdf",
+      content: "Initial Quotation.pdf",
+      timestamp: "2026-07-16T14:00:00Z",
+      metadata: { fileUrl: "/docs/quote_v1.pdf", fileName: "Quotation_v1.pdf", fileSize: "156 KB" }
+    },
+    {
+      id: "m_19",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Here is the preliminary quote based on ₹85,000. It includes premium packing for your glassware and TV, plus the AC uninstallation. Let me know if we can proceed.",
+      timestamp: "2026-07-16T14:02:00Z",
+    },
+    
+    // Day 3
+    {
+      id: "m_20",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "I reviewed the quote. ₹85k is too high. If I leave one of the beds and the dining table here, how much will it be?",
+      timestamp: "2026-07-17T09:30:00Z",
+    },
+    {
+      id: "m_21",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "If we remove those heavy items, the volume drops significantly. We can bring it down to ₹76,000.",
+      timestamp: "2026-07-17T09:45:00Z",
+    },
+    {
+      id: "m_22",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "That sounds much better! Also, I forgot to mention earlier, my sister is moving with me and she has a Golden Retriever. You guys help with pet relocation right?",
+      timestamp: "2026-07-17T10:15:00Z",
+    },
+    {
+      id: "m_23",
+      customerId: "cus_002",
+      sender: "system",
+      type: "system-event",
+      content: "AI detected conflicting information (Pet preference changed)",
+      timestamp: "2026-07-17T10:16:00Z",
+      metadata: { systemEventIcon: "alert-triangle" }
+    },
+    {
+      id: "m_24",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Oh! Earlier you mentioned no pets. Yes, we do pet relocation through a specialized partner. It involves air transport for a Golden Retriever. This will be a separate charge of around ₹15,000. Should I add it?",
+      timestamp: "2026-07-17T10:30:00Z",
+    },
+    {
+      id: "m_25",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Yes, she only decided to move with me yesterday. Let's add it. But can we still keep the total budget around ₹80k? Maybe standard packing instead of premium?",
+      timestamp: "2026-07-17T10:45:00Z",
+    },
+    {
+      id: "m_26",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "I don't recommend standard packing for the glassware. Let me speak with my manager and see if we can do ₹85k total including the pet transfer.",
+      timestamp: "2026-07-17T11:00:00Z",
+    },
+    {
+      id: "m_27",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Okay, check and let me know. Also, for the destination, here is the exact location of the apartment I finalized in Banjara Hills.",
+      timestamp: "2026-07-17T12:00:00Z",
+    },
+    {
+      id: "m_28",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "location",
+      content: "Lodha Bellezza, Banjara Hills",
+      timestamp: "2026-07-17T12:01:00Z",
+      metadata: { latitude: 17.4123, longitude: 78.4354, address: "Road No 12, Banjara Hills, Hyderabad" }
+    },
+    {
+      id: "m_29",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Got it. That's a great society. Good news, we can do ₹84,500 total, including the pet relocation. I'll send the updated quote.",
+      timestamp: "2026-07-17T14:00:00Z",
+    },
+    {
+      id: "m_30",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Thanks! Will you guys also handle installing the ACs in the new place?",
+      timestamp: "2026-07-17T14:15:00Z",
+    },
+    {
+      id: "m_31",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "We only handle uninstallation at the origin. Installation requires specialized technicians depending on the piping at the new apartment.",
+      timestamp: "2026-07-17T14:30:00Z",
+    },
+    {
+      id: "m_32",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Understood. Please send the final quote. Also, since my sister is coming, we need to find an apartment that allows pets. Make sure the relocation quote reflects everything.",
+      timestamp: "2026-07-17T14:45:00Z",
+    },
+    {
+      id: "m_33",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "pdf",
+      content: "Final_Quotation.pdf",
+      timestamp: "2026-07-17T15:00:00Z",
+      metadata: { fileUrl: "/docs/quote_final.pdf", fileName: "Final_Quotation.pdf", fileSize: "162 KB" }
+    },
+    {
+      id: "m_34",
+      customerId: "cus_002",
+      sender: "system",
+      type: "system-event",
+      content: "Quote Q-4482 generated for ₹84,500",
+      timestamp: "2026-07-17T15:01:00Z",
+    },
+    {
+      id: "m_35",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Looks good. I'll process the advance payment by tomorrow.",
+      timestamp: "2026-07-17T16:00:00Z",
+    },
+    
+    // Day 4 (Today)
+    {
+      id: "m_36",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Quick question - my sister is strictly vegan. We might need help finding local vegan grocery delivery services when we land. Does your concierge service help with that?",
+      timestamp: "2026-07-18T09:00:00Z",
+    },
+    {
+      id: "m_37",
+      customerId: "cus_002",
+      sender: "agent",
+      type: "text",
+      content: "Yes, our city orientation guide will include a list of specialized grocery services and vegan restaurants in Banjara Hills.",
+      timestamp: "2026-07-18T09:30:00Z",
+    },
+    {
+      id: "m_38",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "Perfect. One last change - we've decided to bring the dining table after all. Can we squeeze it into the current quote?",
+      timestamp: "2026-07-18T10:00:00Z",
+    },
+    {
+      id: "m_39",
+      customerId: "cus_002",
+      sender: "system",
+      type: "system-event",
+      content: "AI detected budget/inventory risk (Requested free addition of dining table)",
+      timestamp: "2026-07-18T10:01:00Z",
+      metadata: { systemEventIcon: "shield-alert" }
+    },
+    {
+      id: "m_40",
+      customerId: "cus_002",
+      sender: "customer",
+      type: "text",
+      content: "If it's going to cost extra, let me know, but I'm hoping it fits since the pet cost was a bit high.",
+      timestamp: "2026-07-18T10:05:00Z",
+    }
+  ]
+};
+
+import { extraConversations } from "./mockConversationsExtra";
+export const mockConversations = {
+  ...baseMockConversations,
+  ...extraConversations
+};
