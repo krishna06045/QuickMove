@@ -15,8 +15,8 @@ const getGeminiClient = () => {
  */
 export const transcribeAudio = async (base64Audio: string, mimeType: string): Promise<string> => {
   const genAI = getGeminiClient();
-  // gemini-1.5-flash is extremely robust for audio natively
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
+  // gemini-flash-latest is extremely robust for audio natively
+  const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" }); 
   
   // Clean base64 prefix if present
   const base64Data = base64Audio.includes("base64,") ? base64Audio.split("base64,")[1] : base64Audio;

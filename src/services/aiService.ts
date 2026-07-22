@@ -20,7 +20,7 @@ const getGeminiClient = () => {
 export async function analyzeConversation(customerId: string, customerName: string, messages: Message[]): Promise<AIAnalysis> {
   const genAI = getGeminiClient();
   const model = genAI.getGenerativeModel({ 
-    model: "gemini-3.5-flash",
+    model: "gemini-flash-latest",
     generationConfig: {
       responseMimeType: "application/json"
     }
@@ -97,6 +97,11 @@ Provide source evidence (messageId, timestamp, and a short preview) for every ex
 For conflicting fields, set the status to "Conflicting". For missing fields, set the status to "Missing". For confident fields, set status to "Confirmed".
 The suggested reply should be professional, max 5 lines, no emojis.
 
+CRITICAL PRIVACY INSTRUCTION: 
+Sensitive PII in the conversation has been masked with placeholders like <CUSTOMER_NAME_1>, <PHONE_NUMBER_1>, <EMAIL_1>. 
+You MUST extract these exact placeholders as the values. Do not ignore them. Our system will unmask them later. 
+For example, if the conversation says "My name is <CUSTOMER_NAME_1>", you must set the name value to "<CUSTOMER_NAME_1>".
+
 CRITICAL MULTILINGUAL INSTRUCTION: 
 The conversation may be in English, Hindi, Hinglish (Hindi written in Latin script), or a mix. You MUST natively understand and extract entities accurately regardless of the language used. Do not require translation. Output all final JSON values in English.
 
@@ -149,7 +154,7 @@ ${maskedConversation}
 export async function analyzeImage(base64Image: string, mimeType: string): Promise<any> {
   const genAI = getGeminiClient();
   const model = genAI.getGenerativeModel({ 
-    model: "gemini-3.5-flash",
+    model: "gemini-flash-latest",
     generationConfig: { responseMimeType: "application/json" }
   });
 

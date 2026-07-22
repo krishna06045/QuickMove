@@ -50,7 +50,7 @@ export const saveMemoryToFirestore = async (customerId: string, memory: Customer
 export const generateCustomerMemory = async (customerId: string, customerName: string, messages: Message[], existingMemory: CustomerMemory | null): Promise<CustomerMemory> => {
   const genAI = getGeminiClient();
   const model = genAI.getGenerativeModel({ 
-    model: "gemini-3.5-flash",
+    model: "gemini-flash-latest",
     generationConfig: { responseMimeType: "application/json" }
   });
 
@@ -117,7 +117,7 @@ ${maskedConversation}
 
 export const askMemoryAgent = async (customerName: string, question: string, memory: CustomerMemory, recentMessages: Message[]): Promise<string> => {
   const genAI = getGeminiClient();
-  const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
   const formattedConversation = recentMessages.map(m => `[${m.timestamp}] ${m.sender}: ${m.content}`).join("\n");
   const masker = new PIIMasker();

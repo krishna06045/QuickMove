@@ -41,19 +41,24 @@ export function CustomerInbox({ customers }: CustomerInboxProps) {
   }, [selectedCustomerId]);
 
   useEffect(() => {
-    if (!selectedCustomer || conversationMessages.length === 0) return;
+    if (!selectedCustomer) return;
     
+    // Prevent auto-triggering if already attempted or analyzed
     if (liveAnalysis[selectedCustomer.id] || hasAttempted[selectedCustomer.id]) return;
+
+    // Use the correct messages for this customer to avoid stale state race conditions
+    const currentMessages = mockConversations[selectedCustomer.id] || [];
+    if (currentMessages.length === 0) return;
 
     const fetchAnalysis = async () => {
       setIsAnalyzing(true);
       setHasAttempted(prev => ({ ...prev, [selectedCustomer.id]: true }));
       try {
-        const result = await analyzeConversation(selectedCustomer.id, selectedCustomer.name, conversationMessages);
+        const result = await analyzeConversation(selectedCustomer.id, selectedCustomer.name, currentMessages);
         setLiveAnalysis(prev => ({ ...prev, [selectedCustomer.id]: result }));
         
         const existingMemory = await getMemoryFromFirestore(selectedCustomer.id);
-        generateCustomerMemory(selectedCustomer.id, selectedCustomer.name, conversationMessages, existingMemory).catch(err => {
+        generateCustomerMemory(selectedCustomer.id, selectedCustomer.name, currentMessages, existingMemory).catch(err => {
           console.error("Background memory generation failed:", err);
         });
       } catch (error) {
@@ -67,7 +72,7 @@ export function CustomerInbox({ customers }: CustomerInboxProps) {
     };
 
     fetchAnalysis();
-  }, [selectedCustomerId, hasAttempted, liveAnalysis]); // We removed conversationMessages from dependencies to prevent auto-triggering on every upload, we'll let users manually re-analyze
+  }, [selectedCustomerId, hasAttempted, liveAnalysis]); // Dependencies remain the same to prevent auto-trigger on upload
 
   const handleManualAnalyze = async () => {
     if (!selectedCustomer || conversationMessages.length === 0) return;
